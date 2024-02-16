@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace NajotalimCrud.MyPettern
 {
-    public class CourseRepository:ICourseRepository
+    public class CourseRepository : ICourseRepository
     {
         public IConfiguration _configuration;
 
@@ -47,7 +47,7 @@ namespace NajotalimCrud.MyPettern
 
 
 
-        public IEnumerable<Course> GetAllStudents()
+        public IEnumerable<Course> GetAllCourse()
         {
 
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -61,7 +61,7 @@ namespace NajotalimCrud.MyPettern
 
         }
 
-        public List<Course> GetByIdStudent(int id)
+        public List<Course> GetByIdCourse(int id)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
@@ -74,7 +74,7 @@ namespace NajotalimCrud.MyPettern
             }
         }
 
-        public string UpdateStudent(int id,CourseDTOs courseDTO)
+        public string UpdateCourse(int id,CourseDTOs courseDTO)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
@@ -82,7 +82,10 @@ namespace NajotalimCrud.MyPettern
                 var parameters = new Course
                 {
                     Course_Name = courseDTO.Course_Name,
-                    Teacher_Id = te,
+                    Teacher_Id = courseDTO.Teacher_Id,
+                    Duration = courseDTO.Duration,
+                    price = courseDTO.price,
+                    student_count = courseDTO.student_count
 
                 };
 
@@ -93,11 +96,11 @@ namespace NajotalimCrud.MyPettern
         }
 
 
-        public bool DeleteStudent(int id)
+        public bool DeleteCourse(int id)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = "Delete from student where Id = @id";
+                string query = "Delete from course where Id = @id";
 
 
                 connection.Execute(query, new { Id = id });

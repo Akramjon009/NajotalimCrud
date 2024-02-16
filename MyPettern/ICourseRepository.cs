@@ -3,18 +3,17 @@ using NajotalimCrud.Models;
 
 namespace NajotalimCrud.MyPettern
 {
-    public class ICourseRepository
-    {
-        public interface ISudentRepository
+    
+        public interface ICourseRepository
         {
 
-            public string CreateStudent(CourseDTOs CourseDTO);
-            public IEnumerable<Course> GetAllStudents();
-            public List<Course> GetByIdStudent(int id);
-            public bool DeleteStudent(int id);
-            public string UpdateStudent(int id, CourseDTOs CourseDTO);
+            public string CreateCourse(CourseDTOs CourseDTO);
+            public IEnumerable<Course> GetAllCourse();
+            public List<Course> GetByIdCourse(int id);
+            public bool DeleteCourse(int id);
+            public string UpdateCourse(int id, CourseDTOs CourseDTO);
 
 
         }
-    }
+    
 }
