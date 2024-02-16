@@ -1,28 +1,26 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NajotalimCrud.Entities.DTOs;
-using NajotalimCrud.Models;
 using NajotalimCrud.MyPettern;
-
 
 namespace NajotalimCrud.Controllers
 {
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    [Route("[controller]/[action]")]
-    public class StudentsController : ControllerBase
+    public class Course : ControllerBase
     {
-        private readonly IStudentRepository _studentRepo;
+        private readonly ICourseRepository _courseRepo;
 
-        public StudentsController(IStudentRepository studentRepo)
+        public Course(ICourseRepository courseRepo)
         {
-            _studentRepo = studentRepo;
+            _courseRepo = courseRepo;
         }
 
         [HttpPost]
-        public IActionResult CreateStudent(StudentDTOs model)
+        public IActionResult CreateCourses(CourseDTOs model)
         {
             try
             {
-                var response = _studentRepo.CreateStudent(model);
+                var response = _courseRepo.CreateCourse(model);
 
                 return Ok(response);
             }
@@ -33,11 +31,11 @@ namespace NajotalimCrud.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllStudentsFromMyDatabse()
+        public IActionResult GetAllCourses()
         {
             try
             {
-                var response = _studentRepo.GetAllStudents();
+                var response = _courseRepo.GetAllCourse();
 
                 return Ok(response);
             }
@@ -48,25 +46,25 @@ namespace NajotalimCrud.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetStudentById(int id) 
+        public IActionResult GetCourseByIds(int id)
         {
-            try 
+            try
             {
-                var response = _studentRepo.GetByIdStudent(id);
+                var response = _courseRepo.GetByIdCourse(id);
                 return Ok(response);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
         [HttpPut]
-        public IActionResult Update(int id,StudentDTOs student)
+        public IActionResult Updates(int id, CourseDTOs student)
         {
-            
+
             try
             {
-                var response = _studentRepo.UpdateStudent(id,student);
+                var response = _courseRepo.UpdateCourse(id, student);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -75,11 +73,11 @@ namespace NajotalimCrud.Controllers
             }
         }
         [HttpDelete]
-        public IActionResult DeleteStudent(int id) 
+        public IActionResult DeleteCourses(int id)
         {
             try
             {
-                var response = _studentRepo.DeleteStudent(id);
+                var response = _courseRepo.DeleteCourse(id);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -87,6 +85,6 @@ namespace NajotalimCrud.Controllers
                 return BadRequest(ex.Message);
             }
         }
-       
+
     }
 }

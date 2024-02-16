@@ -17,12 +17,11 @@ namespace NajotalimCrud.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStudentwejrqeoruyqe(TeacherDTOs model)
+        public IActionResult CreateTeacher(TeacherDTOs model)
         {
             try
             {
                 var response = _TeacherControllerRepo.CreateTeacher(model);
-
                 return Ok(response);
             }
             catch (Exception ex)
