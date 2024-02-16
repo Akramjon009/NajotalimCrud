@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NajotalimCrud.Entities.DTOs;
 using NajotalimCrud.Models;
-using static NajotalimCrud.MyPettern.ISudentRepository;
+using NajotalimCrud.MyPettern;
+
 
 namespace NajotalimCrud.Controllers
 {

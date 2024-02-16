@@ -47,28 +47,28 @@ namespace NajotalimCrud.MyPettern
 
         
 
-        public IEnumerable<Course> GetAllStudents()
+        public IEnumerable<Student> GetAllStudents()
         {
 
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 string query = "select * from student";
 
-                var result = connection.Query<Course>(query);
+                var result = connection.Query<Student>(query);
 
                 return result;
             }
 
         }
 
-        public List<Course> GetByIdStudent(int id)
+        public List<Student> GetByIdStudent(int id)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 string query = "select * from student where id = @isd";
 
 
-                List<Course> result = connection.Query<Course>(query, new { isd = id }).ToList();
+                List<Student> result = connection.Query<Student>(query, new { isd = id }).ToList();
 
                 return result;
             }
@@ -78,8 +78,8 @@ namespace NajotalimCrud.MyPettern
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
-                string query = "Update from student set fullname = @FullName,age = @age,course_id = @course_id, phone_number=@phone_number where id = @id";
-                var parameters = new Course
+                string query = "Update from student set fullname = @FullName,age = @ages,course_id = @course_id, phone_number=@phone_number where id = @id";
+                var parameters = new Student
                 {
                     FullName = studentDTO.FullName,
                     age = studentDTO.age,

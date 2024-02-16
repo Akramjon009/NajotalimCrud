@@ -6,11 +6,11 @@ namespace NajotalimCrud.MyPettern
    
     public interface ITeacherRepository
     {
-        public string CreateStudent(StudentDTOs studentDTO);
-        public IEnumerable<Course> GetAllStudents();
-        public List<Course> GetByIdStudent(int id);
-        public bool DeleteStudent(int id);
-        public string UpdateStudent(int id, StudentDTOs studentDTO);
+        public string CreateTeacher(TeacherDTOs teacherDTO);
+        public IEnumerable<Teacher> GetAllTeacher();
+        public List<Teacher> GetByIdTeacher(int id);
+        public bool DeleteTeacher(int id);
+        public string UpdateTeacher(int id, TeacherDTOs teacherDTO);
 
     }
     

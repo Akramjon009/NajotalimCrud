@@ -7,8 +7,8 @@ namespace NajotalimCrud.MyPettern
         public interface IStudentRepository
         {
             public string CreateStudent(StudentDTOs studentDTO);
-            public IEnumerable<Course> GetAllStudents();
-            public List<Course> GetByIdStudent(int id);
+            public IEnumerable<Student> GetAllStudents();
+            public List<Student> GetByIdStudent(int id);
             public bool DeleteStudent(int id);
             public string UpdateStudent(int id, StudentDTOs studentDTO);
           

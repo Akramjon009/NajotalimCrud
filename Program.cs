@@ -1,6 +1,7 @@
 
+using NajotalimCrud.Controllers;
 using NajotalimCrud.MyPettern;
-using static NajotalimCrud.MyPettern.ISudentRepository;
+
 
 namespace NajotalimCrud
 {
@@ -17,6 +18,7 @@ namespace NajotalimCrud
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
             var app = builder.Build();
 
