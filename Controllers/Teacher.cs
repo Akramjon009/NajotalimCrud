@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NajotalimCrud.Entities.DTOs;
-using NajotalimCrud.MyPettern;
+using NajotalimCrud.Service.Teacher_Service;
 
 namespace NajotalimCrud.Controllers
 {
@@ -9,9 +8,9 @@ namespace NajotalimCrud.Controllers
     [ApiController]
     public class TeacherController : ControllerBase
     {
-        private readonly ITeacherRepository _TeacherControllerRepo;
+        private readonly ITeacherService _TeacherControllerRepo;
 
-        public  TeacherController(ITeacherRepository TRepo)
+        public  TeacherController(ITeacherService TRepo)
         {
             _TeacherControllerRepo = TRepo;
         }
@@ -21,7 +20,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _TeacherControllerRepo.CreateTeacher(model);
+                var response = _TeacherControllerRepo.CreateTeacherService(model);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -35,7 +34,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _TeacherControllerRepo.GetAllTeacher();
+                var response = _TeacherControllerRepo.GetAllTeacherService();
 
                 return Ok(response);
             }
@@ -50,7 +49,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _TeacherControllerRepo.GetByIdTeacher(id);
+                var response = _TeacherControllerRepo.GetByIdTeacherService(id);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -64,7 +63,7 @@ namespace NajotalimCrud.Controllers
 
             try
             {
-                var response = _TeacherControllerRepo.UpdateTeacher(id, student);
+                var response = _TeacherControllerRepo.UpdateTeacherService(id, student);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -77,7 +76,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _TeacherControllerRepo.DeleteTeacher(id);
+                var response = _TeacherControllerRepo.DeleteTeacherService(id);
                 return Ok(response);
             }
             catch (Exception ex)

@@ -3,7 +3,7 @@ using NajotalimCrud.Models;
 
 namespace NajotalimCrud.MyPettern
 {
-   
+
     public interface ITeacherRepository
     {
         public string CreateTeacher(TeacherDTOs teacherDTO);
@@ -13,5 +13,5 @@ namespace NajotalimCrud.MyPettern
         public string UpdateTeacher(int id, TeacherDTOs teacherDTO);
 
     }
-    
+
 }

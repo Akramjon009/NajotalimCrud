@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NajotalimCrud.Entities.DTOs;
-using NajotalimCrud.MyPettern;
+using NajotalimCrud.Service.Course_Service;
 
 namespace NajotalimCrud.Controllers
 {
@@ -8,11 +8,11 @@ namespace NajotalimCrud.Controllers
     [ApiController]
     public class Course : ControllerBase
     {
-        private readonly ICourseRepository _courseRepo;
+        private readonly ICourseService _course;
 
-        public Course(ICourseRepository courseRepo)
+        public Course(ICourseService course)
         {
-            _courseRepo = courseRepo;
+            _course = course;
         }
 
         [HttpPost]
@@ -20,7 +20,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _courseRepo.CreateCourse(model);
+                var response = _course.CreateCourseService(model);
 
                 return Ok(response);
             }
@@ -35,7 +35,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _courseRepo.GetAllCourse();
+                var response = _course.GetAllCourseService();
 
                 return Ok(response);
             }
@@ -50,7 +50,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _courseRepo.GetByIdCourse(id);
+                var response = _course.GetByIdCourseService(id);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace NajotalimCrud.Controllers
 
             try
             {
-                var response = _courseRepo.UpdateCourse(id, student);
+                var response = _course.UpdateCourseService(id, student);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _courseRepo.DeleteCourse(id);
+                var response = _course.DeleteCourseService(id);
                 return Ok(response);
             }
             catch (Exception ex)

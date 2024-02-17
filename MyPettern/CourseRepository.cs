@@ -24,15 +24,15 @@ namespace NajotalimCrud.MyPettern
 
                     var parameters = new CourseDTOs
                     {
-                       Course_Name = courseDTO.Course_Name,
-                       Teacher_Id = courseDTO.Teacher_Id,
-                       Duration = courseDTO.Duration,
-                       price = courseDTO.price,
-                       student_count = courseDTO.student_count
+                        Course_Name = courseDTO.Course_Name,
+                        Teacher_Id = courseDTO.Teacher_Id,
+                        Duration = courseDTO.Duration,
+                        price = courseDTO.price,
+                        student_count = courseDTO.student_count
 
                     };
 
-                   
+
                     connection.Execute(query, parameters);
 
                 }
@@ -74,7 +74,7 @@ namespace NajotalimCrud.MyPettern
             }
         }
 
-        public string UpdateCourse(int id,CourseDTOs courseDTO)
+        public string UpdateCourse(int id, CourseDTOs courseDTO)
         {
             using (var connection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {

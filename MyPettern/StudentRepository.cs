@@ -45,7 +45,7 @@ namespace NajotalimCrud.MyPettern
             }
         }
 
-        
+
 
         public IEnumerable<Student> GetAllStudents()
         {

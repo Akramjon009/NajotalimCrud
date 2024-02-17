@@ -1,4 +1,9 @@
+using NajotalimCrud.Controllers;
 using NajotalimCrud.MyPettern;
+using NajotalimCrud.Service.Course_Service;
+using NajotalimCrud.Service.CourseService;
+using NajotalimCrud.Service.Student_Service;
+using NajotalimCrud.Service.Teacher_Service;
 
 
 namespace NajotalimCrud
@@ -9,15 +14,20 @@ namespace NajotalimCrud
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+        
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+     
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
             builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<ITeacherService, TeacherService>();
+            builder.Services.AddScoped<IStudentService,StudentService>();
 
             var app = builder.Build();
 

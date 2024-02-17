@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NajotalimCrud.Entities.DTOs;
-using NajotalimCrud.Models;
-using NajotalimCrud.MyPettern;
 
+using NajotalimCrud.Service.Student_Service;
 
 namespace NajotalimCrud.Controllers
 {
@@ -10,11 +9,11 @@ namespace NajotalimCrud.Controllers
     [Route("[controller]/[action]")]
     public class StudentsController : ControllerBase
     {
-        private readonly IStudentRepository _studentRepo;
+        private readonly IStudentService _cs;
 
-        public StudentsController(IStudentRepository studentRepo)
+        public StudentsController(IStudentService student)
         {
-            _studentRepo = studentRepo;
+            _cs = student;
         }
 
         [HttpPost]
@@ -22,7 +21,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _studentRepo.CreateStudent(model);
+                var response = _cs.CreateStudentService(model);
 
                 return Ok(response);
             }
@@ -37,7 +36,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _studentRepo.GetAllStudents();
+                var response = _cs.GetAllStudentsService();
 
                 return Ok(response);
             }
@@ -52,7 +51,7 @@ namespace NajotalimCrud.Controllers
         {
             try 
             {
-                var response = _studentRepo.GetByIdStudent(id);
+                var response = _cs.GetByIdStudentService(id);
                 return Ok(response);
             }
             catch (Exception ex) 
@@ -66,7 +65,7 @@ namespace NajotalimCrud.Controllers
             
             try
             {
-                var response = _studentRepo.UpdateStudent(id,student);
+                var response = _cs.UpdateStudentService(id,student);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -79,7 +78,7 @@ namespace NajotalimCrud.Controllers
         {
             try
             {
-                var response = _studentRepo.DeleteStudent(id);
+                var response = _cs.DeleteStudentService(id);
                 return Ok(response);
             }
             catch (Exception ex)

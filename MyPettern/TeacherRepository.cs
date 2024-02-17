@@ -7,7 +7,7 @@ namespace NajotalimCrud.MyPettern
 {
     public class TeacherRepository : ITeacherRepository
     {
-      
+
         public IConfiguration _configuration;
 
         public TeacherRepository(IConfiguration configuration)
@@ -26,7 +26,7 @@ namespace NajotalimCrud.MyPettern
                     var parameters = new TeacherDTOs
                     {
                         FullName = teacherDTO.FullName,
-                        age = teacherDTO.age,  
+                        age = teacherDTO.age,
                         Phon_number = teacherDTO.Phon_number,
                         experience = teacherDTO.experience,
                         Group_count = teacherDTO.Group_count,
@@ -83,12 +83,12 @@ namespace NajotalimCrud.MyPettern
                 string query = "Update from teacher set fullname = @Fullname, age = @age,phone_number = @Phone_number,experience = @experience,group_count=@Group where id = @id";
                 var parameters = new TeacherDTOs
                 {
-                   FullName = teacherDTO.FullName,
-                   age = teacherDTO.age,
-                   Phon_number = teacherDTO.Phon_number,
-                   experience = teacherDTO.experience, 
-                   Group_count = teacherDTO.Group_count
-                    
+                    FullName = teacherDTO.FullName,
+                    age = teacherDTO.age,
+                    Phon_number = teacherDTO.Phon_number,
+                    experience = teacherDTO.experience,
+                    Group_count = teacherDTO.Group_count
+
                 };
 
                 connection.Execute(query, parameters);
